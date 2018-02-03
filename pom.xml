@@ -6,11 +6,16 @@
   <packaging>war</packaging>
   <name>前端学习</name>
   <dependencies>
-	 <dependency>
+<dependency>
   <groupId>javax.servlet</groupId>
   <artifactId>javax.servlet-api</artifactId>
   <version>3.1.0</version>
   <scope>provided</scope>
+</dependency>
+<dependency>
+  <groupId>com.alibaba</groupId>
+  <artifactId>fastjson</artifactId>
+  <version>1.2.41</version>
 </dependency>
   </dependencies>
 </project>
