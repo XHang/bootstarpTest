@@ -31,9 +31,15 @@ public class DataServlct extends HttpServlet {
 			list.add(country);
 		}
 		String json = JSONArray.toJSONString(list);
-		System.out.println("打印出来的json数据是"+json);
+		
 		response.setCharacterEncoding("utf-8");
 		response.addHeader("Content-Type", "Content-Type:application/json; charset=utf-8");
+		//以下注释的代码是跨域的一种解决方案
+		//response.addHeader("Access-Control-Allow-Origin", "*");
+		//跨域的另一种解决方案-jsonp
+		String callback  = request.getParameter("callback");
+		json=callback+"("+json+")";
+		System.out.println("打印出来的json数据是"+json);
 		response.getWriter().println(json);  
 	}
 
