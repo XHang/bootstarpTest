@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; utf-8" />
+<title>跨域问题示例程序</title>
+<script type='text/javascript'  src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div>
+	要演示跨域问题的话，必须用浏览器打开这个本地文件，这样这个文件链接的协议就是文件协议
+</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+			url:"http://localhost:8080/frontEndRoad/DataServlct",
+			data:{key:"haha"},
+			type: "post", 
+			success: function(data) {
+				alert(data[0].code);
+			},
+			error:function(data){
+				alert("error");
+				console.log(data);
+			}
+		})
+});
+</script>
+</html>
