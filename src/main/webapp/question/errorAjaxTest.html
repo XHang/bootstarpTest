@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type='text/javascript'  src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<title>错误AJAX测试</title>
+</head>
+<body>
+<div>
+	测试当后台返回的响应中，当http状态码为500时
+	jquery的ajax函数会有怎样的表现？
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url:"http://localhost:8080/frontEndRoad/ErrorServlct",
+			type: "post", 
+			 dataType:"json",
+			success: function(data) {
+				alert(data[0].code);
+			},
+			//第一个参数是错误的response响应对象，第二个对象是后台返回的数据，第三个响应是异常对象
+			error:function(response,object,exception){
+				alert("error");
+				console.log("下面是后台响应的内容");
+				console.log(object);
+				console.log("下面是后台response对象");
+				console.log(response);
+				console.log("下面是抛出的异常对象");
+				console.log(exception);
+			}
+		}) 
+	});
+</script>
+</body>
+</html>
