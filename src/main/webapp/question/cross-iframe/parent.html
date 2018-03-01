@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+	This is a parent page<br/>
+	include a child parge by iframe<br/>
+	现在测试ifame的跨域问题<br/>
+</div>
+	<iframe src="https://translate.google.cn/" width="500" height="300" id="iframe"></iframe>
+<div>
+	你现在应该可以看见浏览器控制台报错了
+	Refused to display 'xxx' in a frame because it set 'X-Frame-Options' to 'deny'.
+	这就是ifram的跨域问题了，想要解决此类问题
+	需要在页面的响应头上加上X-Frame-Options响应头，并设为
+	SAMEORIGIN  表示该页面可以在相同域名页面的 frame 中展示。
+	ALLOW-FROM uri 表示该页面可以在指定来源的 frame 中展示。
+</div>
+<div>
+	这个ifram页面就是可以显示的了
+	<iframe src="http://localhost:8080/frontEndRoad/question/cross-iframe/child.html"></iframe>
+</div>
+</body>
+</html>
