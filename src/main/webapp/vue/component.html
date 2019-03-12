@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>vue组件示例页面</title>
+    <!--引入vue框架-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div  id="component">
+        <ol>
+            <todo-item v-for="item in groceryList" v-bind:todo1="item" v-bind:key="item.id"></todo-item>
+        </ol>
+    </div>
+    <script type="application/javascript">
+        Vue.component('todo-item',{
+           template:'<li>{{ todo1.name }}</li>',
+            props:['todo1']
+        })
+        var app = new Vue({
+            el:'#component',
+            data:{
+                groceryList:[
+                    {id:1,name:'苹果'},
+                    {id:2,name:'例子'},
+                    {id:3,name:'GTA8'}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

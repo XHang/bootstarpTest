@@ -7,6 +7,53 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+    <div id="app" >
+       <span v-bind:title="title" v-once>{{message}}</span>
+        <br>
+        <span v-if="hiddenFlag">你看不到我，你看不到我</span>
+        <li v-for="todo in todos">
+            {{todo.name}}
+        </li>
+        <button v-on:click="buttonClick">{{buttonContent}}</button>
+        <input v-model="message">
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <div>消息将反向输出！{{eversedMessage}}</div>
+        <div>消息将反向输出！,调用js方法！{{callMethod()}}</div>
 
+    </div>
+
+    <script type="application/javascript">
+       var app =  new Vue({
+            el:'#app',
+            data:{
+                message:'hello,vue',
+                title:'欢迎你，vue',
+                hiddenFlag:true,
+                todos:[
+                    {name:'张三'} ,{name:'李四'},{name:'崔佛'}
+                ],
+                buttonContent:'不要点这个',
+                rawHtml:'<div>这个是div组件</div>',
+                isButtonDisabled:true
+            },
+           methods:{
+               buttonClick :function () {
+                   this.buttonContent='叫你不要点啦，哼'
+               },
+               callMethod:function () {
+                   return this.message.split("").reverse().join("");
+               }
+
+           },
+           computed:{
+               eversedMessage:function(){
+                   return this.message.split("").reverse().join("");
+               }
+           }
+        })
+
+    </script>
 </body>
 </html>
